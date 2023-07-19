@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Trailblaze</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="google_maps_key">AIzaSyBA5wFsqNHaZ9LZGR9EchiglOXB9iOlCfQ</string>
+    <string name="origen">Origen:</string>
+    <string name="navigation_drawer_open">Abrir</string>
+    <string name="navigation_drawer_close">Cerrar</string>
+
+</resources>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/button_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="3dp">
+
+    <Button
+        android:id="@+id/start_route_button"
+        android:layout_width="3dp"
+        android:layout_height="wrap_content"
+        android:text="Iniciar Ruta"
+        android:layout_weight="1"
+        android:onClick="startRoute"/>
+
+    <Button
+        android:id="@+id/add_stop_button"
+        android:layout_width="3dp"
+        android:layout_height="wrap_content"
+        android:text="Añadir Parada"
+        android:layout_weight="1"
+        android:onClick="addStop"/>
+
+</LinearLayout>

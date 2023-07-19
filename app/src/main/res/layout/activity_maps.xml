@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        <!-- Contenido principal -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+                <com.google.android.gms.maps.MapView
+                    android:id="@+id/mapView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="@id/search_layout"/>
+                <!-- Botón del menú -->
+                <ImageButton
+                    android:id="@+id/menu_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_menu" />
+                <LinearLayout
+                    android:id="@+id/lateral_buttons"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:orientation="vertical"
+                    android:padding="3dp">
+                        <ImageButton
+                            android:id="@+id/my_location_button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginBottom="16dp"
+                            android:onClick="getMyLocation"
+                            android:src="@drawable/ic_my_location" />
+                        <ImageButton
+                            android:id="@+id/save_route"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginBottom="16dp"
+                            android:onClick="saveRoutePopUp"
+                            android:src="@drawable/ic_save3"
+                            android:visibility="invisible"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/button_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_above="@id/search_layout"
+                    android:padding="3dp"
+                    android:visibility="invisible">
+
+                        <Button
+                            android:id="@+id/start_route_button"
+                            android:layout_width="3dp"
+                            android:layout_height="wrap_content"
+                            android:text="Iniciar Ruta"
+                            android:layout_weight="1"
+                            android:onClick="startRoute"/>
+
+                        <Button
+                            android:id="@+id/add_stop_button"
+                            android:layout_width="3dp"
+                            android:layout_height="wrap_content"
+                            android:text="Añadir Parada"
+                            android:layout_weight="1"
+                            android:onClick="addStop"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/search_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_alignParentBottom="true"
+                    android:background="#80000000"
+                    android:textColor="@color/white"
+                    android:padding="5dp">
+
+                        <androidx.appcompat.widget.SearchView
+                            android:id="@+id/searchView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:queryHint="Buscar lugares"
+                            android:iconifiedByDefault="false"
+                            android:focusable="true"
+                            android:imeOptions="actionSearch"
+                            android:inputType="text"/>
+
+                        <ScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1">
+
+                                <ListView
+                                    android:id="@+id/placesList"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"/>
+                        </ScrollView>
+
+                        <Button
+                            android:id="@+id/hide_search_button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ocultar búsqueda"
+                            android:visibility="gone"/>
+                </LinearLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="68dp"> <!-- Agrega un espacio superior de 16dp -->
+
+                        <!-- Resto de tus elementos de diseño -->
+
+                        <TextView
+                            android:id="@+id/distance_duration_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:background="#80000000"
+                            android:padding="8dp"
+                            android:layout_gravity="start|top"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:visibility="gone"
+                            android:drawableStart="@drawable/ic_pedestrian"
+                            android:scaleType="fitXY"/>
+
+                </FrameLayout>
+
+
+
+        </RelativeLayout>
+        <!-- Menú lateral -->
+        <LinearLayout
+            android:id="@+id/navigation_menu"
+            android:layout_width="280dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="@android:color/background_dark"
+            android:orientation="vertical">
+
+                <!-- Título del menú -->
+                <TextView
+                    android:id="@+id/menu_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Rutas Guardadas"
+                    android:padding="16dp"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:gravity="center_vertical"/>
+
+                <!-- Contenedor para las opciones del menú -->
+                <LinearLayout
+                    android:id="@+id/menu_options_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="32dp"/>
+
+
+                <!-- Título del menú -->
+                <TextView
+                    android:id="@+id/menu_titledos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Telefono Contacto"
+                    android:padding="16dp"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:gravity="center_vertical"/>
+
+                <!-- Número de teléfono de contacto -->
+                <TextView
+                    android:id="@+id/menu_phone_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:padding="16dp" />
+        </LinearLayout>
+
+
+
+</androidx.drawerlayout.widget.DrawerLayout>

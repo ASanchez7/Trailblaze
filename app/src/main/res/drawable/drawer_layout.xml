@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Contenido principal de la actividad -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Resto del contenido de tu actividad -->
+
+    </RelativeLayout>
+
+    <!-- Menú lateral -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start">
+
+        <!-- Encabezado del menú (opcional) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="@color/white">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_arrow"
+                android:contentDescription="Description" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="menu header title"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="menu subtitulo"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <!-- Opciones del menú -->
+        <Menu
+            android:id="@+id/menu_items"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <group android:id="@+id/group1">
+                <item
+                    android:id="@+id/menu_item1"
+                    android:title="item 1"
+                    android:icon="@drawable/ic_arrow" />
+
+                <item
+                    android:id="@+id/menu_item2"
+                    android:title="menu_item1"
+                    android:icon="@drawable/ic_arrow" />
+            </group>
+
+            <group android:id="@+id/group2">
+                <item
+                    android:id="@+id/menu_item3"
+                    android:title="menu_item1"
+                    android:icon="@drawable/ic_arrow" />
+
+                <item
+                    android:id="@+id/menu_item4"
+                    android:title="menu_item1"
+                    android:icon="@drawable/ic_arrow" />
+            </group>
+
+        </Menu>
+
+    </com.google.android.material.navigation.NavigationView>
+
+</androidx.drawerlayout.widget.DrawerLayout>
